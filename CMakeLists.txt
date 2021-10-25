@@ -11,4 +11,5 @@ include_directories(${MPI_INCLUDE_PATH})
 
 add_executable(sieve sieve.c)
 target_link_libraries(sieve ${MPI_LIBRARIES})
-
+add_executable(sieve_noeven sieve_noeven.c)
+target_link_libraries(sieve_noeven ${MPI_LIBRARIES})
