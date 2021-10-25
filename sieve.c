@@ -119,8 +119,10 @@ int main (int argc, char *argv[])
    count = 0;
 
    for (i = 0; i < size; i++)
-      if (!marked[i])
-		  count++;
+      if (!marked[i]) {
+          count++;
+          fprintf(stdout,"process %d %d\n",id,i+low_value);
+      }
 
    if (p > 1) MPI_Reduce (&count, &global_count, 1, MPI_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
 

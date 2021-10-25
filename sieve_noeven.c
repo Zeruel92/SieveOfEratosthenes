@@ -98,16 +98,18 @@ int main (int argc, char *argv[]) {
 
             while (marked[++index])
                 ;
-            prime = index + 2;
-        //fprintf(stdout,"p %d prime: %d\n",rank,prime);
+            prime = index+2;
 
     } while (prime * prime <= n);
 
     count = 0;
 
     for (i = 0; i < size; i++)
-        if (!marked[i])
+        if (!marked[i]){
             count++;
+            fprintf(stdout,"process %d, %d\n",rank, i+low_value);
+        }
+
 
     if (processes > 1) MPI_Reduce (&count, &global_count, 1, MPI_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
 
